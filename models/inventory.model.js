@@ -4,39 +4,30 @@ const Schema = mongoose.Schema;
 const inventorySchema = new Schema({
     mNDC:{
         type: String,
-        required:true,
     },
     pId:{
         type: Number,
-        required:true,
     },
     mId:{
         type: Number,
-        required: true,
     },
     mName:{
         type: String,
-        required: true,
     },
     mQuantity:{
         type: Number,
-        required: true,
     },
     mSupplier:{
         type: String,
-        required: true,
     },
     mManufacture:{
         type: String,
-        required: true,
     },
     mPrice:{
         type: Number,
-        required: true,
     },
     mExpDate:{
         type: Date,
-        required: true,
     },
 },{timestamps:true});
 
