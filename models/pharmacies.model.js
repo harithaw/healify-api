@@ -31,11 +31,19 @@ const pharmacySchema = new Schema({
         type: String,
         required:true,
     },
+    pOwner:{
+        type: String,
+        required:true,
+    },
     pWebsite:{
         type: String,
     },
     pOperating:{
         type: String,
+    },
+    pStatus:{
+        type: Number,
+        required:true,
     },
 },{timestamps:true});
 

@@ -14,6 +14,10 @@ const inventorySchema = new Schema({
         type: Number,
         required: true,
     },
+    mName:{
+        type: String,
+        required: true,
+    },
     mQuantity:{
         type: Number,
         required: true,
