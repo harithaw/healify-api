@@ -1,73 +1,73 @@
-const Admin = require('../models/inventory.model.js')
+const Inventory = require('../models/inventory.model.js')
 
 //all inventory
-const getAdmins = async(req,res)=>{
-    const admin =await Admin.find({})
-    res.status(200).json(admin)
+const getInventories = async(req,res)=>{
+    const inventory =await Inventory.find({})
+    res.status(200).json(inventory)
 }
 
 
-//get single admin
-const getAdmin = async(req,res)=>{
-    const {aEmail} = req.params
+//get single inventory
+const getInventory = async(req,res)=>{
+    const {mName} = req.params
 
-    const admin = await Admin.find({aEmail:aEmail})
+    const inventory = await Inventory.find({mName:mName})
 
-    if(!admin){
-        return res.status(404).json({error:'Admin not found'})
+    if(!inventory){
+        return res.status(404).json({error:'Inventory not found'})
     }
 
-    res.status(200).json(admin)
+    res.status(200).json(inventory)
 }
 
-//create new admin
+//create new inventory
 
-const createAdmin = async(req,res)=>{
-    const Email = req.body.aEmail;
-    const Password = req.body.aPassword;
+const createInventory = async(req,res)=>{
 
-    // add new admin doc to db
+    const {mNDC, pId, mName, mQuantity, mSupplier, mManufature, mPrice, mExpDate} = req.body 
+
+    // add new inventory doc to db
     try{
-        const admin = await Admin.create({Email,Password})
-        res.status(200).json(admin)
+        const inventory = await Inventory.create({mNDC, pId, mName, mQuantity, mSupplier, mManufature, mPrice, mExpDate})
+        res.status(200).json(inventory)
     }catch(error){
         res.status(400).json({error: error.message})
     }
 }
 
 
-//update admin
-const updateAdmin = async(req,res)=>{
-    const {aEmail} = req.params
+//update inventory
+const updateInventory = async(req,res)=>{
+    const {mName} = req.params
 
-    const admin = await Admin.findOneAndUpdate({aEmail:aEmail},{
+    const inventory = await Admin.findOneAndUpdate({mName:mName},{
         ...req.body
     })
 
-    if (!admin){
-        return res.status(404).json({error:'No such admin'})
+    if (!inventory){
+        return res.status(404).json({error:'No such inventory'})
     }
 
-    res.status(200).json(admin)
+    res.status(200).json(inventory)
 }
 
-//delete admin
-const deleteAdmin = async(req,res)=>{
-    const {aEmail} = req.params
+//delete inventory
+const deleteInventory = async(req,res)=>{
+    const {mName} = req.params
 
-    const admin = await Admin.findOneAndDelete({aEmail: aEmail})
+    const inventory = await Inventory.findOneAndDelete({mName: mName})
 
-    if (!admin){
-        return res.status(400).json({error: 'No such admin'})
+    if (!inventory){
+        return res.status(400).json({error: 'No such inventory'})
     }
 
-    res.status(200).json(admin)
+    res.status(200).json(inventory)
 }
 
 module.exports={
-    getAdmins,
-   getAdmin,
-   createAdmin,
-   updateAdmin,
-   deleteAdmin
+    getInventories,
+    getInventory,
+    createInventory,
+    deleteInventory,
+    updateInventory
 }

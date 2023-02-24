@@ -16,8 +16,17 @@ app.use(express.json());
 
 //import routes
 const adminRoutes = require('./routes/admins')
+const inventoryRoutes = require('./routes/inventory')
+const ownerRoutes = require('./routes/owners')
+const medicineRoutes = require('./routes/medicines')
+const pharmacyRoutes = require('./routes/pharmacies')
+
 
 app.use('/admins',adminRoutes)
+app.use('/inventories',inventoryRoutes)
+app.use('/owners',ownerRoutes)
+app.use('/medicines',medicineRoutes)
+app.use('/pharmacies',pharmacyRoutes)
     
 
 //connect DB
