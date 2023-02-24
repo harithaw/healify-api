@@ -15,9 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 //import routes
-// const bookRoutes = require('./routes/books')
+const adminRoutes = require('./routes/admins')
 
-// app.use('/lends',lendRoutes)
+app.use('/admins',adminRoutes)
     
 
 //connect DB
